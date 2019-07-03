@@ -3,8 +3,21 @@ body {
     color: black;
 }
 
-.container {
-    background-color: bisque;
+#quiz {
+    background-color: white;
     color: black;
-    opacity: 0.9;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.form-control {
+    background-color: rgb(224, 224, 224);
+}
+
+.container {
+    background-color: aquamarine;
+    color: black;
+    opacity: 0.8;
+    align-content: center;
+    text-align: center;
 }
