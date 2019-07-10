@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Survey</title>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../app.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../app.css">  
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
@@ -19,6 +22,9 @@
         </h2>
         <div class="container" style="max-width: 50rem; background-color: white !important" id="quiz">
         <form>
+            <label for="name">Please enter your full name:   </label>
+            <input type="name" id="name" placeholder="john doe" style="margin-bottom: 15px">
+            <br/>
             <div class="form-group">
                 <label for="Question1">I consider myself outgoing</label>
                 <select class="form-control" id="Q1">
@@ -120,7 +126,7 @@
                 </select>
             </div>
         </div>
-            <button type="submit" class="btn btn-dark mb-2" data-toggle="modal" data-target="#myModal" style="margin-top: 3%; margin-bottom: 5%">Submit and Find Friends!</button>
+            <button type="submit" id="submit" class="btn btn-dark mb-2" data-toggle="modal" data-target="#myModal" style="margin-top: 3%; margin-bottom: 5%">Submit and Find Friends!</button>
         </form>
 
         <div class="modal fade" id="myModal" role="dialog">
@@ -141,6 +147,26 @@
               </div>
             </div>
     </div>
+    <script>
+        $("#submit").on("click", function() {
+            var name = $("#name").val()
+           var q1 = $("#Q1").val()
+           var q2 = $("#Q2").val()
+           var q3 = $("#Q3").val()
+           var q4 = $("#Q4").val()
+           var q5 = $("#Q5").val()
+           var q6 = $("#Q6").val()
+           var q7 = $("#Q7").val()
+           var q8 = $("#Q8").val()
+           var q9 = $("#Q9").val()
+           var q10 = $("#Q10").val()
+           var scores = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
+            console.log(scores) 
+            $.post("/api/friends", {name, scores}, function(data) {
+                console.log(data)
+            })
+        })
+    </script>
 </body>
 
 </html>
